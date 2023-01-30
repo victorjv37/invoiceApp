@@ -2,6 +2,25 @@
 const express = require ('express');
 const path = require('path');
 const app = express();
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+//db conexion
+mongoose.connect('mongodb+srv://victorjv37:Javier2002@apiinvoices.3ckx2wq.mongodb.net/?retryWrites=true&w=majority',{
+           useNewUrlParser: true,
+           useUnifiedTopology: true });
+
+mongoose.connection.on('error',(error)=>{
+        console.log('ERROR: ' + error);
+});
+
+mongoose.connection.once('open',()=>{
+    console.log('The Database connection is working');
+});
+
+//configuracion body-parser
+app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.json());
 
 //static web server
 app.use(express.static(path.join(__dirname,'dist')));
@@ -17,5 +36,5 @@ app.use('/api/deleteinvoice', require('./routes/delete.js') );
 
 //puerto
 app.listen(3000,()=>{
-    console.log('Listening at localcost:3000');
+    console.log('Listening at localhost:3000');
 });
