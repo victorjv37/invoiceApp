@@ -6,7 +6,7 @@ const invoiceSchema = new mongoose.Schema({
                 type : String,
                 required : true
             },
-            customerAdress : {
+            customerAddress : {
                 type : String,
                 required : true
             },
