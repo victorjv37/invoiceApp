@@ -1,13 +1,25 @@
 import React from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import Card from 'react-bootstrap/Card'
 
 export default class MainContainer extends React.Component{
 
+
+        constructor(props){
+            super(props);
+        }
+        
     render(){
         return(
             <Jumbotron>
-                <h1>Hello World</h1>
-                <p>Random text...</p>
+                <Card bg="dark" text="white">
+                    <Card.Header as='h1' style={{textAlign:'center'}}>
+                        {this.props.head}
+                    </Card.Header>
+                    <Card.Body>
+                        {this.props.children}
+                    </Card.Body>
+                </Card>
             </Jumbotron>
             );
     }
