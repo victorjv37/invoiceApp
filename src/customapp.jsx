@@ -1,6 +1,8 @@
-import React from "react";
-import  ReactDOM from "react-dom";
+import React from 'react';
+import  ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainContainer from './Components/MainContainer';
 
 ReactDOM.render(
-    <h1>Hello world</h1>,
+    <MainContainer/>,
     document.getElementById('root'));
