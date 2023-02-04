@@ -1,4 +1,7 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default class PricesAndDescriptions extends React.Component{
     constructor(props){
@@ -11,16 +14,16 @@ export default class PricesAndDescriptions extends React.Component{
         let markup = [];
         itemsInformation.map((item, index )=>{
             markup.push(
-                <div key={'index-'+index}>
-                    <div>items.description</div>
-                    <div>items.price</div>
-                </div>
+                <Row key={'index-'+index}>
+                    <Col>{item.description}</Col>
+                    <Col>${item.price}</Col>
+                </Row>
             );
         });
         return(
-            <div>
+            <Container style={{fontSize: '1.3em', fontWeight: 'bold'}}>
                 {markup}
-            </div>
+            </Container>
             );
     }
 }
