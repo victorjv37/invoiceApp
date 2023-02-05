@@ -5,26 +5,54 @@ import MainContainer from './Components/MainContainer';
 import CustomTextField from './Components/CustomTextField';
 import CustomTextArea from './Components/CustomTextArea';
 import PricesAndDescriptions from './Components/PricesAndDescriptions';
+import SubmitPriceAndDescription from './Components/SubmitPriceAndDescription';
 
 class App extends React.Component{
    
     constructor(props){
         super(props);
+        this.state = {
+            description : '',
+            price : ''
+        }
+
+        this.inputHandler = this.inputHandler.bind(this);
+        this.clickHandler = this.clickHandler.bind(this);
 
     }
+
+    clickHandler(event){
+        console.log('Quieres añadir un precio y descripción');
+    }
+
+    inputHandler(event){
+
+    if(event.target.name === 'itemDescription'){
+        this.setState({
+            description : event.target.value
+        });
+
+    }
+    if(event.target.name === 'itemPrice'){
+        this.setState({
+            price : event.target.value
+        });
+    
+    }
+
+    console.log('texto '+ event.target.value);
+}
 
 
     render(){
 
-        const info = [
-            {description: 'Playera Verde', price: '150'},
-            {description: 'Playera Azul', price: '250'},
-            {description: 'Playera Gris', price: '200'}
-        ];
-        
+
         return(
-            <PricesAndDescriptions
-            itemsInfo={info} />
+            <SubmitPriceAndDescription
+            descriptionVal={this.state.description}
+            priceVal={this.state.price}
+            handler={this.inputHandler}
+            buttonHandler={this.clickHandler} />
             );
     }
 }
