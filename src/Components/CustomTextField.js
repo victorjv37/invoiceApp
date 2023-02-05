@@ -14,10 +14,12 @@ export default class CustomTextField extends React.Component{
                     {this.props.label}
                 </h5>
                 </Form.Label>
-            <Form.Control type='text'
-            placeholder={this.props.placeholder}
-            value={this.props.val}
-            onChange={this.props.changeHandler} />
+            <Form.Control 
+                type='text'
+                name={this.props.name}
+                placeholder={this.props.placeholder}
+                value={this.props.val}
+                onChange={this.props.changeHandler} />
             <Form.Text className='text-muted'>
                 {this.props.aid}
             </Form.Text>

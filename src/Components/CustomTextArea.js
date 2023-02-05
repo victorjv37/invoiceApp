@@ -14,7 +14,8 @@ export default class CustomTextArea extends React.Component{
                 <InputGroup.Prepend>
                     <InputGroup.Text>{this.props.label}</InputGroup.Text>
                 </InputGroup.Prepend>
-                <Form.Control 
+                <Form.Control
+                name={this.props.name} 
                 as="textarea" 
                 aria-label="With textarea"
                 value={this.props.val}
