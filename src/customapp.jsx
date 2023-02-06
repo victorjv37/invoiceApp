@@ -9,6 +9,9 @@ import PricesAndDescriptions from './Components/PricesAndDescriptions';
 import SubmitPriceAndDescription from './Components/SubmitPriceAndDescription';
 import CustomAlert from './Components/CustomAlert';
 import Layout from './Components/Layout';
+import DisplayInvoice from './Components/DisplayInvoice';
+import DisplayAllInvoices from './Components/DisplayAllInvoicess';
+
 
 
 class App extends React.Component{
@@ -20,9 +23,11 @@ class App extends React.Component{
     
     render(){
         return(
-            <MainContainer head='Invoice Generator'>
-                <Layout updateMode invoiceId='63e0e3bb254b6853cced5f55'/>
-            </MainContainer>
+            // <MainContainer head='Invoice Generator'>
+            //     <Layout updateMode invoiceId='63e0e3bb254b6853cced5f55'/>
+            // </MainContainer>
+            // <DisplayInvoice invoiceId='63e0e3bb254b6853cced5f55'/>
+            <DisplayAllInvoices/>
         );
     }
 }
