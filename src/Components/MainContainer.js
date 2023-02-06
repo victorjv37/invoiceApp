@@ -16,7 +16,7 @@ export default class MainContainer extends React.Component{
                     <Card.Header as='h1' style={{textAlign:'center'}}>
                         {this.props.head}
                     </Card.Header>
-                    <Card.Body>
+                    <Card.Body style={{color:'black'}}>
                         {this.props.children}
                     </Card.Body>
                 </Card>
