@@ -6,11 +6,15 @@ const invoiceSchema = new mongoose.Schema({
                 type : String,
                 required : true
             },
-            customerAddress : {
+            sellerAddress : {
                 type : String,
                 required : true
             },
             customerName : {
+                type : String,
+                required : true
+            },
+            customerAddress : {
                 type : String,
                 required : true
             },
@@ -43,4 +47,5 @@ const invoiceSchema = new mongoose.Schema({
                 required : true,
             }
 });
+
 module.exports = mongoose.model('invoice', invoiceSchema);

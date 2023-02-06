@@ -38,7 +38,7 @@ export default class SubmitPriceAndDescription extends React.Component{
                             onChange={this.props.handler} 
                             name='itemPrice' />
                             <Form.Text className="text muted">
-                                Enter a brief description of the product
+                                Enter the products price
                             </Form.Text>
                         </Form.Group>
                     </Col>
