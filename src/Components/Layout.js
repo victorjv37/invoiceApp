@@ -38,13 +38,28 @@ export default class Layout extends React.Component{
 
     componentDidMount(){
         //este metodo se ejecuta automaticamente
-        fetch('/api/readinvoice'+this.props.invoiceId,{
+        fetch('/api/readinvoice/'+this.props.invoiceId,{
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json'
             }
         }).then((response)=>{
-            console.log(response);
+            if(response.ok){
+
+                return response.json();
+            }else{
+                throw new Error('Hubo problemas con el servidor');
+            }
+        }).then((responseAsJson)=>{
+            //si todo sale bien
+            this.setState({
+                invoiceDescription : responseAsJson.invoiceDescription,
+                sellerName : responseAsJson.sellerName,
+                sellerAddress : responseAsJson.sellerAddress
+            });
+            console.log(responseAsJson);
+        }).catch((error)=>{
+            console.log(error)
         });
     }
 
@@ -205,6 +220,7 @@ export default class Layout extends React.Component{
                         <CustomTextField
                         customId='seller-name'
                         label="Seller's name"
+                        val={this.state.sellerName}
                         name='sellerName'
                         placeholder='Enter name...'
                         changeHandler={this.inputHandler}
@@ -212,6 +228,7 @@ export default class Layout extends React.Component{
                         <CustomTextField
                         customId='seller-address'
                         label="Seller's address"
+                        val={this.state.sellerAddress}
                         name='sellerAddress'
                         placeholder='Enter address...'
                         changeHandler={this.inputHandler}
