@@ -4,7 +4,8 @@
   "description": "creador de facturas con react",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "watch": "webpack --watch"
   },
   "keywords": [
     "react",

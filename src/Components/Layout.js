@@ -8,6 +8,7 @@ import CustomTextArea from './CustomTextArea';
 import CustomTextField from './CustomTextField';
 import PricesAndDescriptions from './PricesAndDescriptions';
 import SubmitPriceAndDescription from './SubmitPriceAndDescription';
+import CustomAlert from './CustomAlert';
 
 
 
@@ -24,11 +25,35 @@ export default class Layout extends React.Component{
             itemDescription : '',
             itemPrice : '',
             termsAndConditions : '',
-            finalPrice : 0
+            finalPrice : 0,
+            show : false,
+            title : '',
+            content : ''
         }
         this.inputHandler = this.inputHandler.bind(this);
         this.clickHandler = this.clickHandler.bind(this);
         this.createInvoice = this.createInvoice.bind(this);
+        this.closeAlert = this.closeAlert.bind(this);
+    }
+
+    componentDidMount(){
+        //este metodo se ejecuta automaticamente
+        fetch('/api/readinvoice'+this.props.invoiceId,{
+            method : 'GET',
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        }).then((response)=>{
+            console.log(response);
+        });
+    }
+
+    closeAlert(){
+
+        this.setState({
+            show : false
+        });
+
     }
 
     createInvoice(event){
@@ -51,7 +76,21 @@ export default class Layout extends React.Component{
                 'Content-Type' : 'application/json'
             }
         }).then((response )=>{
-            console.log(response.json());
+            if(response.ok){
+                //todo fue exitoso
+                this.setState({
+                    show : true,
+                    title : 'The invoice was created succesfully',
+                    content: 'The invoice was saved on the system'
+                });
+            }else{
+                //hubo un fallo
+                this.setState({
+                    show : true,
+                    title : 'Oops!! The invoice was not created',
+                    content: 'Try again...'
+                });
+            }
         });
         event.preventDefault();
     }
@@ -149,6 +188,7 @@ export default class Layout extends React.Component{
 
     render(){
         return(
+        <div>
             <Form onSubmit={this.createInvoice}>
             <Container>
                 <Row>
@@ -221,17 +261,35 @@ export default class Layout extends React.Component{
                 </Row>
                 <Row>
                     <Col>
-                        <Button
-                        type='submit'
-                        style={{marginTop:'2em'}}
-                        variant='primary'
-                        size='lg'>
-                            Create Invoice
-                        </Button>
+                        {
+                            (this.props.updateMode)?
+                            <Button
+                                type='submit'
+                                style={{marginTop:'2em'}}
+                                variant='warning'
+                                size='lg'>
+                                    Update Invoice
+                            </Button>:
+                            <Button
+                            type='submit'
+                            style={{marginTop:'2em'}}
+                            variant='primary'
+                            size='lg'>
+                                Create Invoice
+                            </Button>
+
+                        }    
+
                     </Col>
                 </Row>
             </Container>
             </Form>
+            <CustomAlert
+            show={this.state.show} 
+            title={this.state.title} 
+            content={this.state.content}
+            close={this.closeAlert} />
+        </div>
             );
     }
 }

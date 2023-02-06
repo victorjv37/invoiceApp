@@ -20,7 +20,7 @@ class App extends React.Component{
     
     render(){
         return(
-            <Layout/>
+            <Layout updateMode invoiceId='63da970633ff23503cd0725d'/>
         );
     }
 }
