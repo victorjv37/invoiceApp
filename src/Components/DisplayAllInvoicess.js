@@ -9,6 +9,10 @@ export default class DisplayAllInvoices extends React.Component{
     constructor(props){
         super(props);
 
+        this.state = {
+            invoicesData : []
+        }
+
         this.deleteInvoice = this.deleteInvoice.bind(this)   
     }
 
@@ -32,6 +36,24 @@ export default class DisplayAllInvoices extends React.Component{
                     throw new Error();
                 }  
         }).then((responseAsJson)=>{
+
+            let data = [];
+
+                responseAsJson.map((item, index)=>{
+                    data.push(
+                        {
+                            id:item._id,
+                            description : item.invoiceDescription
+                        }
+                    );
+                });
+
+                this.setState((state, props)=>{
+                    return {
+                        invoicesData : state.invoicesData.concat(data)
+                    }
+                });
+            
            console.log(responseAsJson); 
         }).catch(()=>{
             console.log('Hubo problemas');
@@ -39,11 +61,7 @@ export default class DisplayAllInvoices extends React.Component{
     }
 
     render(){
-        const data = [
-            {id: '5456346456',description : 'hdsavhgdaksdhk'},
-            {id: '5456346456',description : 'hdsavhgdaksdhk'},
-            {id: '5456346456',description : 'hdsavhgdaksdhk'}
-        ];
+        const data = this.state.invoicesData;
 
         let markup = [];
 
