@@ -4,49 +4,41 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import ButtonViewInvoice from "./ButtonViewInvoice";
 import ButtonUpdateInvoice from "./ButtonUpdateInvoice";
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
-export default class InvoiceRow extends React.Component{
-    constructor(props){
-        super(props);
-    }
+export default class InvoiceRow extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-    render(){
-        const data = this.props.invoicesData;
+  render() {
+    const data = this.props.invoicesData;
+    debugger;
+    let markup = [];
 
-        let markup = [];
-
-        data.map((item,index)=>{
-            markup.push(
-                <Row key={'index-'+index} style={{marginTop:'2em'}}>
-                    <Col style={{padding:'1.5em'}}>
-                        {item.id}
-                    </Col>
-                    <Col style={{padding:'1.5em'}}>
-                        {item.description}
-                    </Col>
-                    <Col style={{padding:'1.5em'}}>
-                    <ButtonGroup>
-                        <Button
-                        variant="danger"
-                        onClick={()=>{
-                            this.props.deleteInvoice(item.id)
-                        }}>
-                        Delete
-                        </Button>
-                        <ButtonViewInvoice
-                          invoiceId={item.id}/>
-                        <ButtonUpdateInvoice
-                          invoiceId={item.id}/>
-                    </ButtonGroup>
-                    </Col>
-                </Row>
-            );
-            });
-        return(
-            <React.Fragment>
-                {markup}
-            </React.Fragment>
-        );
-    }
+    data.map((item, index) => {
+      console.log(item);
+      markup.push(
+        <Row key={"index-" + index} style={{ marginTop: "2em" }}>
+          <Col style={{ padding: "1.5em" }}>{item.id}</Col>
+          <Col style={{ padding: "1.5em" }}>{item.description}</Col>
+          <Col style={{ padding: "1.5em" }}>
+            <ButtonGroup>
+              <Button
+                variant="danger"
+                onClick={() => {
+                  this.props.deleteInvoice(item.id);
+                }}
+              >
+                Delete
+              </Button>
+              <ButtonViewInvoice invoiceId={item.id} />
+              <ButtonUpdateInvoice invoiceId={item.id} />
+            </ButtonGroup>
+          </Col>
+        </Row>
+      );
+    });
+    return <React.Fragment>{markup}</React.Fragment>;
+  }
 }
