@@ -1,33 +1,28 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const invoiceModel = require('../models/invoice.js');
+const invoiceModel = require("../models/invoice.js");
+var pg = require("pg");
 
-router.post('/',(request, response )=>{
-    const input = request.body;
-
-    
-    const newDocument = new invoiceModel({
-        sellerName : input.sellerName,
-        sellerAddress : input.sellerAddress,
-        customerName : input.customerName,
-        customerAddress : input.customerAddress,
-        items : input.items,
-        finalPrice : input.finalPrice,
-        terms : input.terms,
-        invoiceDescription : input.invoiceDescription,
-});
-
-//saving document
-newDocument.save((err, doc)=>{
-   if(err){
-    console.log('ERROR: '+ err );
-    response.status(500).json({message:'no se pudo guardar la info'});
-   } else{
-    console.log('la info se ha guardado correctamente');
-    response.status(200).json({message:'la info se ha guardado correctamente'});
-   }
-});
-
+router.post("/", (request, response) => {
+  const input = request.body;
+  var conString =
+    "postgres://tbsifhep:vc-HK00-0KSl1FysW9tMUe7jehXh0Qx4@rogue.db.elephantsql.com/tbsifhep"; //Can be found in the Details page
+  var client = new pg.Client(conString);
+  client.connect(function (err) {
+    if (err) {
+      return console.error("could not connect to postgres", err);
+    }
+    client.query(
+      `INSERT INTO INVOICE (sellerName, sellerAddress, customerName, customerAddress, finalPrice, terms, invoiceDescription) VALUES ('${input.sellerName}', '${input.sellerAddress}', '${input.customerName}', '${input.customerAddress}', '${input.finalPrice}', '${input.terms}', '${input.invoiceDescription}');`,
+      function (err, result) {
+        if (err) {
+          return console.error("error running query", err);
+        }
+        response.status(201).json({});
+        client.end();
+      }
+    );
+  });
 });
 
 module.exports = router;
