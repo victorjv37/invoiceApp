@@ -44,6 +44,7 @@ router.get("/:invoiceNumber", (request, response) => {
         console.log(result.rows);
         invoice = result.rows[0];
         response.status(200).json(invoice);
+        client.end();
       }
     );
   });
