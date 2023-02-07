@@ -12,6 +12,7 @@ export default function ButtonToCreateInvoice(props){
     
     return(
         <Button
+            style={{marginTop:'2em'}}
             size='lg'
             variant='primary'
             onClick={handleClick}>

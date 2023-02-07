@@ -12,10 +12,9 @@ export default function ButtonUpdateInvoice(props){
     
     return(
         <Button
-            size='sm'
             variant='primary'
             onClick={handleClick}>
-            View Invoice
+            Update Invoice
         </Button>
     );
 }

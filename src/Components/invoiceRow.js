@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import ButtonViewInvoice from "./ButtonViewInvoice";
 import ButtonUpdateInvoice from "./ButtonUpdateInvoice";
-import ButtonGroup from "./react-bootstrap/ButtonGroup";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 export default class InvoiceRow extends React.Component{
     constructor(props){
@@ -18,14 +18,17 @@ export default class InvoiceRow extends React.Component{
 
         data.map((item,index)=>{
             markup.push(
-                <Row key={'index-'+index}>
-                    <Col>{item.id}</Col>
-                    <Col>{item.description}</Col>
-                    <Col>
+                <Row key={'index-'+index} style={{marginTop:'2em'}}>
+                    <Col style={{padding:'1.5em'}}>
+                        {item.id}
+                    </Col>
+                    <Col style={{padding:'1.5em'}}>
+                        {item.description}
+                    </Col>
+                    <Col style={{padding:'1.5em'}}>
                     <ButtonGroup>
                         <Button
                         variant="danger"
-                        size="sm"
                         onClick={()=>{
                             this.props.deleteInvoice(item.id)
                         }}>
@@ -36,7 +39,7 @@ export default class InvoiceRow extends React.Component{
                         <ButtonUpdateInvoice
                           invoiceId={item.id}/>
                     </ButtonGroup>
-                </Col>
+                    </Col>
                 </Row>
             );
             });

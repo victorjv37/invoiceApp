@@ -12,7 +12,6 @@ export default function ButtonViewInvoice(props){
     
     return(
         <Button
-            size='sm'
             variant='warning'
             onClick={handleClick}>
             View Invoice

@@ -12,6 +12,7 @@ import SubmitPriceAndDescription from './SubmitPriceAndDescription';
 import CustomAlert from './CustomAlert';
 import CustomCard from './CustomCard';
 import ButtonToMainMenu from './ButtonToMainMenu';
+import ButtonToShowAllInvoices from './ButtonToShowAllInvoices';
 
 
 
@@ -361,22 +362,27 @@ export default class Layout extends React.Component{
                         <Card.Body>
                             {
                                 (this.props.updateMode)?
-                                <Button
+                                <React.Fragment>
+                                    <Button
                                     type='submit'
                                     style={{marginTop:'2em'}}
                                     variant='warning'
                                     size='lg'>
                                         Update Invoice
-                                </Button>:
-                                <Button
-                                    type='submit'
-                                    style={{marginTop:'2em'}}
-                                    variant='primary'
-                                    size='lg'>
-                                        Create Invoice
-                                </Button>
+                                    </Button>
+                                    <ButtonToShowAllInvoices/>
+                                </React.Fragment>:
+                                <React.Fragment>
+                                    <Button
+                                        type='submit'
+                                        style={{marginTop:'2em'}}
+                                        variant='primary'
+                                        size='lg'>
+                                            Create Invoice
+                                    </Button>
+                                    <ButtonToMainMenu/> 
+                                </React.Fragment>
                             }
-                            <ButtonToMainMenu/>    
                         </Card.Body>
                     </Card>
                     </Col>

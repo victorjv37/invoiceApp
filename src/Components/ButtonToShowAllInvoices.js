@@ -12,6 +12,7 @@ export default function ButtonToShowAllInvoices(props){
     
     return(
         <Button
+            style={{marginTop:'2em'}}
             size='lg'
             variant='danger'
             onClick={handleClick}>
