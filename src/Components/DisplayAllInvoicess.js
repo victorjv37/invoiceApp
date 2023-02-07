@@ -92,7 +92,7 @@ export default class DisplayAllInvoices extends React.Component {
         responseAsJson.map((item, index) => {
           data.push({
             id: item.id,
-            description: item.invoiceDescription,
+            description: item.invoicedescription,
           });
         });
 

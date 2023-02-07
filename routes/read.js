@@ -44,18 +44,7 @@ router.get("/:invoiceNumber", (request, response) => {
         console.log("*");
         console.log(result.rows);
         invoice = result.rows[0];
-        client.query(
-          `SELECT * FROM item WHERE invoice_id = ${id};`,
-          function (err, result) {
-            if (err) {
-              return console.error("error running query", err);
-            }
-            invoice.items = result.rows;
-            console.log("\\", invoice);
-            response.status(200).json(invoice);
-            client.end();
-          }
-        );
+        response.status(200).json(invoice);
       }
     );
   });

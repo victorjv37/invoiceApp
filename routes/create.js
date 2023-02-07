@@ -13,7 +13,7 @@ router.post("/", (request, response) => {
       return console.error("could not connect to postgres", err);
     }
     client.query(
-      `INSERT INTO INVOICE (sellerName, sellerAddress, customerName, customerAddress, finalPrice, terms, invoiceDescription) VALUES ('${input.sellerName}', '${input.sellerAddress}', '${input.customerName}', '${input.customerAddress}', '${input.finalPrice}', '${input.terms}', '${input.invoiceDescription}');`,
+      `INSERT INTO INVOICE (sellername, selleraddress, customername, customeraddress, finalprice, terms, invoicedescription) VALUES ('${input.sellername}', '${input.selleraddress}', '${input.customername}', '${input.customeraddress}', '${input.finalprice}', '${input.terms}', '${input.invoicedescription}');`,
       function (err, result) {
         if (err) {
           return console.error("error running query", err);
