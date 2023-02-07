@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PricesAndDescriptions from './PricesAndDescriptions';
+import ButtonToShowAllInvoices from './ButtonToShowAllInvoices';
 
 export default class DisplayInvoice extends React.Component{
     constructor(props){
@@ -123,7 +124,12 @@ export default class DisplayInvoice extends React.Component{
                             <h5>Terms and Conditions</h5>
                             {this.state.termsAndConditions}
                         </Col>    
-                    </Row>       
+                    </Row>    
+                    <Row>
+                        <Col>
+                            <ButtonToShowAllInvoices/>
+                        </Col>    
+                    </Row>   
                 </Container>    
             </MainContainer>
             );

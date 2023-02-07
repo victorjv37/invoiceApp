@@ -10,9 +10,13 @@ export default class Homepage extends React.Component{
 
     render(){
         return(
-            <Jumbotron>
+            <Jumbotron style={{
+                width:'80%',
+                marginLeft:'10%',
+                height:'400px',
+                marginTop:'10%'}}>
                 <h1>Welcome to Invoice Generator</h1>
-                <p>Press any of the buttons below</p>
+                <p style={{fontSize:'1.3em'}}>Press any of the buttons below</p>
                 <ButtonToCreateInvoice/>
                 {"  "}
                 <ButtonToShowAllInvoices/>

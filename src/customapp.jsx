@@ -14,6 +14,7 @@ import DisplayAllInvoices from './Components/DisplayAllInvoicess';
 import LoadInvoiceUpdater from './Components/LoadInvoiceUpdater';
 import LoadDisplayInvoice from './Components/LoadDisplayInvoice';
 import Homepage from './Components/Homepage';
+import NotFound from './Components/NotFound';
 import {
     BrowserRouter,
     Switch,
@@ -55,6 +56,9 @@ class App extends React.Component{
                 </Route>
                 <Route path='/displayinvoice/:invoiceId'>
                     <LoadDisplayInvoice/>
+                </Route>
+                <Route>
+                    <NotFound/>
                 </Route>
             </Switch>
             </BrowserRouter>
