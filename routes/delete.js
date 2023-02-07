@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const invoiceModel = require("../models/invoice.js");
 var pg = require("pg");
 
 router.delete("/:invoiceNumber", (request, response) => {

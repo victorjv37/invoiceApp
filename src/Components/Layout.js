@@ -7,8 +7,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import CustomTextArea from "./CustomTextArea";
 import CustomTextField from "./CustomTextField";
-import PricesAndDescriptions from "./PricesAndDescriptions";
-import SubmitPriceAndDescription from "./SubmitPriceAndDescription";
 import CustomAlert from "./CustomAlert";
 import CustomCard from "./CustomCard";
 import ButtonToMainMenu from "./ButtonToMainMenu";
@@ -23,9 +21,6 @@ export default class Layout extends React.Component {
       selleraddress: "",
       customername: "",
       customeraddress: "",
-      // itemsInfo: [],
-      // itemDescription: "",
-      // itemPrice: "",
       termsandconditions: "",
       finalprice: 0,
       show: false,
@@ -33,7 +28,6 @@ export default class Layout extends React.Component {
       content: "",
     };
     this.inputHandler = this.inputHandler.bind(this);
-    // this.clickHandler = this.clickHandler.bind(this);
     this.createInvoice = this.createInvoice.bind(this);
     this.closeAlert = this.closeAlert.bind(this);
     this.updateInvoice = this.updateInvoice.bind(this);
@@ -90,7 +84,6 @@ export default class Layout extends React.Component {
       selleraddress: this.state.selleraddress,
       customername: this.state.customername,
       customeraddress: this.state.customeraddress,
-      // items : this.state.itemsInfo,
       finalprice: this.state.finalprice,
       terms: this.state.termsandconditions,
       invoicedescription: this.state.invoicedescription,
@@ -332,19 +325,6 @@ export default class Layout extends React.Component {
                 </CustomCard>
               </Col>
             </Row>
-            {/* <Row style={{ marginTop: "2em" }}>
-              <Col>
-                <CustomCard head="ITEMS PURCHASED">
-                  <PricesAndDescriptions itemsInfo={this.state.itemsInfo} />
-                  <SubmitPriceAndDescription
-                    descriptionVal={this.state.itemDescription}
-                    handler={this.inputHandler}
-                    priceVal={this.state.itemPrice}
-                    buttonHandler={this.clickHandler}
-                  />
-                </CustomCard>
-              </Col>
-            </Row> */}
             <Row style={{ marginTop: "2em" }}>
               <Col>
                 <CustomCard head="TOTAL PRICE">
