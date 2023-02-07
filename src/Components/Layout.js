@@ -11,6 +11,7 @@ import PricesAndDescriptions from './PricesAndDescriptions';
 import SubmitPriceAndDescription from './SubmitPriceAndDescription';
 import CustomAlert from './CustomAlert';
 import CustomCard from './CustomCard';
+import ButtonToMainMenu from './ButtonToMainMenu';
 
 
 
@@ -374,7 +375,8 @@ export default class Layout extends React.Component{
                                     size='lg'>
                                         Create Invoice
                                 </Button>
-                            }    
+                            }
+                            <ButtonToMainMenu/>    
                         </Card.Body>
                     </Card>
                     </Col>
